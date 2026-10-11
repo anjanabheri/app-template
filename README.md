@@ -63,82 +63,81 @@ Version is automatically generated from the build date: `(YEAR-2025).(MONTH).(DA
 
 ## 🚀 Quick Start
 
-### Step 1: Prerequisites
+### Step 1: Install Prerequisites
+
+#### Required Packages (All Platforms)
+
+| Package | Version | macOS Install | Windows Install |
+|---------|---------|---------------|-----------------|
+| **Node.js** | 18+ | `brew install node` | [nodejs.org](https://nodejs.org) |
+| **npm** | 9+ | *(comes with Node.js)* | *(comes with Node.js)* |
+| **Python** | 3.8+ | `brew install python` | [python.org](https://python.org) *(check "Add to PATH")* |
+| **Git** | any | `brew install git` | [git-scm.com](https://git-scm.com) |
+
+> **macOS:** Install [Homebrew](https://brew.sh) first if you don't have it:
+> ```bash
+> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+> ```
+
+#### Platform-Specific Packages
+
+| Target Platform | Additional Packages | macOS Install | Windows Install |
+|----------------|---------------------|---------------|-----------------|
+| **Web** | *None* | — | — |
+| **Android** | Android Studio, JDK 17+ | [developer.android.com/studio](https://developer.android.com/studio) | Same |
+| **iOS** | Xcode 15+, CocoaPods | App Store + `brew install cocoapods` | ❌ *macOS only* |
+| **macOS Desktop** | *None* (Electron via npm) | — | ❌ *macOS only* |
+| **Windows Desktop** | *None* (Electron via npm) | ❌ *Windows only* | — |
+
+#### Post-Install Setup
 
 <details>
-<summary><strong>🍎 macOS</strong></summary>
+<summary><strong>🍎 macOS — Additional Setup Steps</strong></summary>
 
-**Required for all platforms:**
+**Verify installations:**
 ```bash
-# Install Homebrew (if not installed)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Install Node.js (v18+) and Python 3
-brew install node python
-
-# Verify installations
 node --version    # Should be 18+
 npm --version     # Should be 9+
 python3 --version # Should be 3.8+
 ```
 
-**For Web only:** No additional tools needed.
-
-**For Android:**
+**For Android — Set JAVA_HOME** (add to `~/.zshrc`):
 ```bash
-# Install Android Studio from https://developer.android.com/studio
-# Then install JDK (usually bundled with Android Studio)
-
-# Set JAVA_HOME (add to ~/.zshrc)
 export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 
 # Accept Android SDK licenses
 ~/Library/Android/sdk/tools/bin/sdkmanager --licenses
 ```
 
-**For iOS:**
+**For iOS — Set Xcode CLI tools:**
 ```bash
-# Install Xcode from the App Store (required)
-# Then install CocoaPods
-brew install cocoapods
-
-# Set Xcode command line tools
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 ```
-
-**For macOS Desktop:** No additional tools needed (Electron is installed via npm).
 
 </details>
 
 <details>
-<summary><strong>🪟 Windows</strong></summary>
+<summary><strong>🪟 Windows — Additional Setup Steps</strong></summary>
 
-**Required for all platforms:**
+**Verify installations:**
 ```powershell
-# Install Node.js (v18+) from https://nodejs.org
-# Install Python 3 from https://python.org (check "Add to PATH" during install)
-
-# Verify installations
 node --version    # Should be 18+
 npm --version     # Should be 9+
 python --version  # Should be 3.8+
 ```
 
-**For Web only:** No additional tools needed.
+**For Android — Set JAVA_HOME** (System Environment Variables):
+```
+Variable: JAVA_HOME
+Value:    C:\Program Files\Android\Android Studio\jbr
+```
 
-**For Android:**
+**Accept Android SDK licenses:**
 ```powershell
-# Install Android Studio from https://developer.android.com/studio
-# During install, ensure "Android SDK" and "Android Virtual Device" are checked
-
-# Set JAVA_HOME (System Environment Variables)
-# Value: C:\Program Files\Android\Android Studio\jbr
-
-# Accept Android SDK licenses
 %LOCALAPPDATA%\Android\Sdk\tools\bin\sdkmanager --licenses
 ```
 
-**For Windows Desktop:** No additional tools needed (Electron is installed via npm).
+> **Note:** Use `python build.py` instead of `./build.py` on Windows.
 
 </details>
 
